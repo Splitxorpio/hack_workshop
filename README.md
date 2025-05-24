@@ -1,5 +1,3 @@
----
-
 ### 🛠️ Setup Instructions
 
 1. **Create a virtual environment**
@@ -24,5 +22,3 @@
 4. **(Optional) Freeze dependencies**
 
    pip freeze > requirements.txt
-
----

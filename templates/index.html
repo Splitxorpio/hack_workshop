@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <h2>Add User</h2>
+        <form action="/add" method="POST">
+            Name: <input type="text" name="name">
+            Email: <input type="text" name="email">
+            <button type="submit">Add</button>
+        </form>
+        <ul>
+            {% for user in users %}
+                <li>{{user.name}} - {{user.email}}</li>
+                <button onclick="showEditForm({{user.id}})">Edit</button>
+                <a href="/delete/{{user.id}}">Delete</a>
+                <form id="edit-form-{{user.id}}" class="edit-form" action="/update" method="post" style="display: none;">
+                    <input type="hidden" name="id" value="{{user.id}}">
+                    Name: <input type="text" name="name" value="{{user.name}}">
+                    Email: <input type="text" name="email" value="{{user.email}}">
+                    <button type="submit">Update</button>
+                </form>
+            {% endfor %}
+        </ul>
+        <script>
+            function showEditForm(id){
+                document.querySelectorAll('.edit-form').forEach(form => form.style.display="none");
+                document.getElementById('edit-form-' + id).style.display = 'block';
+            }
+        </script>
+    </body>
+</html>
